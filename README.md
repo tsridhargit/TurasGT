@@ -1,12 +1,6 @@
-<!-- PROJECT SHIELDS -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
 
-# Jobnet
-This is a simple implementation of a job board website similar to [Glassdoor](https://glassdoor.com), developed using **Django** web framework and **Django Rest Framework (DRF)**.
+# Job Portal
+This is a simple implementation of a job board website, developed using **Django** web framework and **Django Rest Framework (DRF)**.
 
 
 </br>
@@ -16,7 +10,7 @@ To get started with this project using Docker, **clone the repository** and run 
 ```
 docker compose up
 ```
-sample **.env** files are in `.envs` directory. 
+sample **.env** files are in `.envs` directory.
 
 </br>
 
@@ -27,7 +21,7 @@ To get started with this project without using Docker, **clone the repository** 
 ```
 python3.10 -m venv venv
 source venv/bin/activate
-``` 
+```
 
 * Install the required packages
 ```
@@ -63,7 +57,7 @@ EMAIL_HOST_PASSWORD='<your_email_host_password>'
 python manage.py migrate
 ```
 
-if you see this error message: 
+if you see this error message:
 ```
 django.db.utils.ProgrammingError: permission denied to create extension "citext"
 HINT:  Must be superuser to create this extension.
@@ -77,19 +71,3 @@ ALTER ROLE jobnet SUPERUSER;
 ```
 python manage.py runserver
 ```
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/jamedadi/jobnet?style=flat-square
-[contributors-url]: https://github.com/jamedadi/jobnet/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/jamedadi/jobnet?style=flat-square
-[forks-url]: https://github.com/jamedadi/jobnet/network/members
-[stars-shield]: https://img.shields.io/github/stars/jamedadi/jobnet?style=flat-square
-[stars-url]: https://github.com/jamedadi/jobnet/stargazers
-[issues-shield]: https://img.shields.io/github/issues/jamedadi/jobnet?style=flat-square
-[issues-url]: https://github.com/jamedadi/jobnet/issues
-[license-shield]: https://img.shields.io/github/license/jamedadi/jobnet?style=flat-square
-[license-url]: https://github.com/jamedadi/jobnet/blob/master/LICENSE.txt
-
