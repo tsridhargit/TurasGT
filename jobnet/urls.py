@@ -2,6 +2,12 @@ from django.conf.urls import url
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+import os
+from pathlib import Path
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+from . import views
+
 
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
@@ -10,7 +16,9 @@ from rest_framework_simplejwt.views import TokenRefreshView
 from rest_framework.permissions import AllowAny
 from accounts.api.views import CustomTokenObtainPairView
 from jobnet import settings
-
+BASE_DIR = Path(__file__).resolve().parent.parent
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_URL = "static/"
 schema_view = get_schema_view(
     openapi.Info(
         title="Snippets API",
@@ -25,6 +33,8 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
+    path("", views.index, name="index"),
+    path('home/', views.home , name='home'),
     path('admin/', admin.site.urls),
     path('api/accounts/', include('accounts.api.urls')),
     path('api/company/', include('company.api.urls')),
@@ -38,7 +48,7 @@ urlpatterns = [
     url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     url(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     # --------- swagger --------- #
-]
-
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += staticfiles_urlpatterns()
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

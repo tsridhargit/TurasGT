@@ -1,15 +1,37 @@
 import os.path
 from pathlib import Path
 from decouple import config
+import mimetypes
+mimetypes.add_type("text/css", ".css", True)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG')
 ALLOWED_HOSTS = list(config('ALLOWED_HOSTS'))
+SETTINGS_PATH = os.path.normpath(os.path.dirname(__file__))
+STATIC_ROOT = os.path.join(SETTINGS_PATH, "static")
 
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(SETTINGS_PATH, 'static'),
+)
 # Application definition
-
+TEMPLATE_DIRS = (
+    os.path.join(SETTINGS_PATH, 'templates'),
+)
+TEMPLATE_CONTEXT_PROCESSORS = (
+       'django.contrib.auth.context_processors.auth',
+       'django.core.context_processors.i18n',
+       'django.core.context_processors.request',
+       'django.core.context_processors.media',
+       'django.core.context_processors.static',
+       'django.core.context_processors.debug',
+       'django.contrib.messages.context_processors.messages',
+       'cms.context_processors.media',
+       'sekizai.context_processors.sekizai',
+)
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -46,7 +68,7 @@ ROOT_URLCONF = 'jobnet.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(SETTINGS_PATH, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -64,11 +86,11 @@ WSGI_APPLICATION = 'jobnet.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('POSTGRES_DB'),
-        'USER': config('POSTGRES_USER'),
-        'PASSWORD': config('POSTGRES_PASSWORD'),
-        'HOST': config('POSTGRES_HOST'),
-        'PORT': config('POSTGRES_PORT'),
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT'),
     }
 }
 
@@ -97,7 +119,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = '/static/'
+STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
