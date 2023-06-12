@@ -3,17 +3,16 @@ from pathlib import Path
 from decouple import config
 import mimetypes
 import dj_database_url
-
+import django_heroku
 mimetypes.add_type("text/css", ".css", True)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG')
+DEBUG = 'True'
 ALLOWED_HOSTS = ['*', '.herokuapp.com']
 SETTINGS_PATH = os.path.normpath(os.path.dirname(__file__))
-STATIC_ROOT = os.path.join(SETTINGS_PATH, "static")
-
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
@@ -160,3 +159,4 @@ SWAGGER_SETTINGS = {
     'LOGIN_URL': 'http://127.0.0.1:8000/admin/login/',
     'LOGOUT_URL': 'http://127.0.0.1:8000/admin/logout/',
 }
+django_heroku.settings(locals())

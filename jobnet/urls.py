@@ -16,6 +16,7 @@ from rest_framework_simplejwt.views import TokenRefreshView
 from rest_framework.permissions import AllowAny
 from accounts.api.views import CustomTokenObtainPairView
 from jobnet import settings
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = "static/"
@@ -35,6 +36,7 @@ schema_view = get_schema_view(
 urlpatterns = [
     path("", views.index, name="index"),
     path('home/', views.home , name='home'),
+    path('register/', views.register, name='register'),
     path('admin/', admin.site.urls),
     path('api/accounts/', include('accounts.api.urls')),
     path('api/company/', include('company.api.urls')),
