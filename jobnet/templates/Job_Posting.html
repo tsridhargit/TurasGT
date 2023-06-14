@@ -33,40 +33,80 @@
 								<section id="banner">
 									<div class="content">
 										<header>
-											<h1>Welcome to Turas, your one stop<br />
-											for getting your dream job</h1>
-											<p>Please Register to search and apply for open positions</p>
+											<h1>Welcome to Turas</h1>
+											<p>Please enter these fileds to publish the job</p>
 										</header>
 										<!-- Form -->
 											<h3>Registration Form</h3>
 
 											<form method="post" action="{% url 'home' %}">
 												{% csrf_token %}
-												<div class="row gtr-uniform">
-													<div class="col-6 col-12-xsmall">
-														<input type="text" name="username" id="username" value="" placeholder="Username" required/></br />
-													</div></br />
-												</div>
-												<div class="row gtr-uniform">
-													<div class="col-6 col-12-xsmall">
-														<input type="email" name="email" id="email" value="" placeholder="Email ID" required/></br />
-													</div></br />
-												</div>
-												<div class="row gtr-uniform">
-													<div class="col-6 col-12-xsmall">
-														<input type="password" name="passord" id="password" value="" placeholder="Password" required/></br />
-													</div></br />
-												</div>
-												<div class="row gtr-uniform">
-													<div class="col-6 col-12-xsmall">
-														<input type="password" name="cpassword" id="cpassword" value="" placeholder="Confirm Password" required/></br />
-													</div>
 
-													<div class="col-12">
+
+												<div class="row gtr-uniform">
+													<div class="col-6 col-12-xsmall">
+														<input type="text" name="BranchName" id="BranchName" value="" placeholder="Hospital Branch" required/></br />
+													</div></br />
+
+												<div class="row gtr-uniform">
+													<div class="col-6 col-12-xsmall">
+														<input type="text" name="ProfessionID" id="ProfessionID" value="" placeholder="Profession" required/></br />
+													</div></br />
+
+												<div class="row gtr-uniform">
+													<div class="col-6 col-12-xsmall">
+														<input type="text" name="SpecialityID" id="SpecialityID" value="" placeholder="Speciality" required/></br />
+													</div></br />
+
+												<div class="row gtr-uniform">
+													<div class="col-6 col-12-xsmall">
+														<input type="text" name="locationID" id="locationID" value="" placeholder="Location" required/></br />
+													</div></br />
+
+												<div class="row gtr-uniform">
+													<div class="col-6 col-12-xsmall">
+														<input type="text" name="fullPartID" id="fullPartID" value="" placeholder="Full Time Part Time Both" required/></br />
+													</div></br />
+
+												<div class="row gtr-uniform" class="col-6 col-12-xsmall">Job Type<br/>
+												<span><input type="radio" id="data_14_0" name="data_14" value="Yes"/> Full Time</span><br/>
+												<span><input type="radio" id="data_14_1" name="data_14" value="No"/> Part Time</span><br/>
+												<span><input type="radio" id="data_14_2" name="data_14" value="Not sure"/> Both</span><br/>
+												</div></br />
+
+												<div class="row gtr-uniform">
+													<div class="col-6 col-12-xsmall">
+														<input type="text" name="jobdesc" id="jobdesc" value="" placeholder="Job Description" required/></br />
+													</div></br />
+
+												<div class="row gtr-uniform">
+													<div class="col-6 col-12-xsmall">
+														<input type="text" name="jobskillset" id="jobskillset" value="" placeholder="Job Skillset" required/></br />
+													</div></br />
+
+												<div class="row gtr-uniform">
+													<div class="col-6 col-12-xsmall">
+														<input type="text" name="jobqualify" id="jobqualify" value="" placeholder="Job Qualification" required/></br />
+													</div></br />
+
+												<div class="row gtr-uniform">
+													<div class="col-6 col-12-xsmall">
+														<input type="text" name="jobqualify" id="jobqualify" value="" placeholder="Job Qualification" required/></br />
+													</div></br />
+
+												<div class="row gtr-uniform">
+													<div class="col-6 col-12-xsmall">
+														<input type="text" name="jobbenefits" id="jobbenefits" value="" placeholder="Job Benefits"/></br />
+													</div></br />
+
+
+												<div class="col-12">
 														<ul class="actions">
-															<li><input type="submit" value="Register" class="primary" /></li>
+															<li><input type="submit" value="submit" class="primary" /></li>
 															<li><input type="reset" value="Reset" class="primary" /></li>
 														</ul>
+													</div>
+
 													</div>
 												</div>
 											</form>
